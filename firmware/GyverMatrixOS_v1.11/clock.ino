@@ -111,7 +111,7 @@ void drawClock(byte hrs, byte mins, boolean dots, byte X, byte Y) {
 
 void clockRoutine() {
   if (loadingFlag) {
-#if (MCU_TYPE == 0 || MCU_TYPE == 1)
+#if (USE_RTC == 1 && (MCU_TYPE == 0 || MCU_TYPE == 1))
     DateTime now = rtc.now();
     secs = now.second();
     mins = now.minute();
