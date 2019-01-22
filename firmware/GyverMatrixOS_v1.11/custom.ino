@@ -304,7 +304,7 @@ void customRoutine() {
   }
 }
 
-void timeSet(boolean type, boolean dir) {    // type: 0-часы, 1-минуты, dir: 0-уменьшить, 1-увеличить
+void doTimeSet(boolean type, boolean dir) {    // type: 0-часы, 1-минуты, dir: 0-уменьшить, 1-увеличить
   if (type) {
     if (dir) hrs++;
     else hrs--;
@@ -359,7 +359,7 @@ void btnsModeChange() {
         autoplayTimer = millis();
         nextMode();
       } else {
-        timeSet(1, 1);
+        doTimeSet(1, 1);
       }
     }
 
@@ -368,7 +368,7 @@ void btnsModeChange() {
         autoplayTimer = millis();
         prevMode();
       } else {
-        timeSet(1, 0);
+        doTimeSet(1, 0);
       }
     }
 
@@ -377,14 +377,14 @@ void btnsModeChange() {
         AUTOPLAY = true;
         autoplayTimer = millis();
       } else {
-        timeSet(0, 1);
+        doTimeSet(0, 1);
       }
     }
     if (bt_down.clicked()) {
       if (!clockSet) {
         AUTOPLAY = false;
       } else {
-        timeSet(0, 0);
+        doTimeSet(0, 0);
       }
     }
 
@@ -395,7 +395,7 @@ void btnsModeChange() {
           if (effects_speed < 30) effects_speed = 30;
           effectTimer.setInterval(effects_speed);
         } else {
-          timeSet(1, 1);
+          doTimeSet(1, 1);
         }
       }
     if (bt_left.holding())
@@ -405,7 +405,7 @@ void btnsModeChange() {
           if (effects_speed > 300) effects_speed = 300;
           effectTimer.setInterval(effects_speed);
         } else {
-          timeSet(1, 0);
+          doTimeSet(1, 0);
         }
       }
     if (bt_up.holding())
@@ -416,7 +416,7 @@ void btnsModeChange() {
           fadeBrightness = globalBrightness;
           FastLED.setBrightness(globalBrightness);
         } else {
-          timeSet(0, 1);
+          doTimeSet(0, 1);
         }
       }
     if (bt_down.holding())
@@ -427,7 +427,7 @@ void btnsModeChange() {
           fadeBrightness = globalBrightness;
           FastLED.setBrightness(globalBrightness);
         } else {
-          timeSet(0, 0);
+          doTimeSet(0, 0);
         }
       }
   }
