@@ -146,7 +146,7 @@ void clockTicker() {
       if (secs > 59) {      // каждую минуту
         secs = 0;
         mins++;
-#if (MCU_TYPE == 0 || MCU_TYPE == 1)
+#if ((MCU_TYPE == 0 || MCU_TYPE == 1) && USE_RTC == 1)
         DateTime now = rtc.now();
         secs = now.second();
         mins = now.minute();
